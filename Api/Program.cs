@@ -1,5 +1,7 @@
 using Persistence;
 using Application;
+using WebApi.Middleware;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -11,7 +13,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.PersistenceConfigure(builder.Configuration);
 builder.Services.ApplicationConfigure();
 var app = builder.Build();
-
+app.UseMiddleware<ErrorHandlerMiddleware>();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {

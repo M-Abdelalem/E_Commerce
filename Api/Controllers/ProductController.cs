@@ -4,9 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Api.Controllers
 {
-    [ApiController]
-    [Route("[controller]")]
-    public class ProductController : ControllerBase
+    
+    public class ProductController : BaseController
     {
 
         private readonly ILogger<ProductController> _logger;
@@ -21,16 +20,7 @@ namespace Api.Controllers
         [HttpGet(Name = "GetAllProduct")]
         public ActionResult GetAll()
         {
-            try
-            {
-                return Ok(_mediatR.Send(new GetProductRequest()));
-            }catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
-            finally{
-
-            }
+            return Ok(_mediatR.Send(new GetProductRequest()).Result);
         }
     }
 }
