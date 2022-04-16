@@ -1,15 +1,17 @@
 ﻿using Application.Contract.Persistence;
+using Domain.Base;
 using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Persistence.Repositories
 {
-    public class Repository<T> : Irepository<T> where T : class
+    public class Repository<T> : Irepository<T> where T : BaseEntity
     {
         readonly E_CommerceDbContext _context;
         public Repository(E_CommerceDbContext context)
@@ -31,7 +33,9 @@ namespace Persistence.Repositories
 
         public async Task<IReadOnlyList<T>> GetAll()
         {
-            return await _context.Set<T>().ToListAsync();
+           
+            return await _context.Set<T>().Where(x=>x.IsDeleted==false).ToListAsync();
+
         }
 
         public async Task<T> GetById(int id)
