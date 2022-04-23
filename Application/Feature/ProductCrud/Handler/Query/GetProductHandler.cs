@@ -18,7 +18,12 @@ namespace Application.Feature.ProductCrud.Handler.Query
         }
         public async Task<IReadOnlyList<ProductDto>> Handle(GetProductRequest request, CancellationToken cancellationToken)
         {
-            var products = _unitOfWork.productRepository.GetAll().Result;
+            IReadOnlyList<Product> products=new List<Product>();
+            if (request.brandId==0)
+                 products = _unitOfWork.productRepository.GetAll().Result;
+
+            else
+                 products = _unitOfWork.productRepository.GetByBrandId(request.brandId).Result;
             return  _mapper.Map<IReadOnlyList< ProductDto >>(products);
         }
     }

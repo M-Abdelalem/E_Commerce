@@ -17,16 +17,19 @@ namespace Api.Controllers
             _logger = logger;
             _mediatR = mediatR;
         }
-        //[HttpPost]
-        [HttpPost(Name = "AddProductType")]
-
+        [HttpPost]
         public ActionResult Add(AddProductTypeDto AddProductType)
         {
             return Ok(_mediatR.Send(new AddProductTypeRequest(AddProductType)).Result);
         }
-        [HttpGet(Name = "GetAllProductType")]
+        [HttpGet]
 
-        public ActionResult GetAll()
+        public async Task< ActionResult<IReadOnlyList<ProductTypeDto>>> GetAll()
+        {
+            return  Ok(_mediatR.Send(new GetProductTypeRequest()).Result);
+        }
+        [HttpGet("{id}")]
+        public async Task<ActionResult<IReadOnlyList<ProductTypeDto>>> GetById(int id)
         {
             return Ok(_mediatR.Send(new GetProductTypeRequest()).Result);
         }

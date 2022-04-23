@@ -3,7 +3,7 @@ using MediatR;
 
 namespace Application.Feature.ProductCrud.Request
 {
-    public record GetProductRequest:IRequest<IReadOnlyList<ProductDto>>
+    public record GetProductRequest(int brandId):IRequest<IReadOnlyList<ProductDto>>
     {
     }
 }

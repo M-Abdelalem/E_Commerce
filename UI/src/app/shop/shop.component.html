@@ -1,0 +1,23 @@
+<div class="container">
+    <div class="row">
+    <section class="col-3">
+        fillter
+        <ul class="list-group">
+            <li class="list-group-item" [ngClass]="{active: item.id==selectedBrandId}"
+             (click)="SelectBrand(item.id)"
+             *ngFor="let item of productTypes">{{item.name}}</li>
+    
+          </ul>
+    </section>
+    <section class="col-9">
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            <app-product-item [product]="item" *ngFor="let item of products">
+                
+            </app-product-item>
+
+
+        </div>
+    </section>
+    </div>
+</div>
+

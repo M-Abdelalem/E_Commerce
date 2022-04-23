@@ -1,3 +1,4 @@
+using Application.Dto;
 using Application.Feature.ProductCrud.Request;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -17,10 +18,10 @@ namespace Api.Controllers
             _mediatR = mediatR;
         }
 
-        [HttpGet(Name = "GetAllProduct")]
-        public ActionResult GetAll()
+        [HttpGet]
+        public async Task<ActionResult<IReadOnlyList<ProductDto>>>GetAll(int brandId)
         {
-            return Ok(_mediatR.Send(new GetProductRequest()).Result);
+            return Ok(_mediatR.Send(new GetProductRequest(brandId)).Result);
         }
     }
 }

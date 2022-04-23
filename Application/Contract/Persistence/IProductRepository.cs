@@ -5,5 +5,7 @@ namespace Application.Contract.Persistence
 {
     public interface IProductRepository : Irepository<Product>
     {
+         Task<IReadOnlyList<Product>> GetByBrandId(int? brandId);
+
     }
 }

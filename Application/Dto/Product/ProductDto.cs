@@ -1,7 +1,7 @@
 ﻿
 namespace Application.Dto
 {
-    internal class ProductDto
+    public class ProductDto
     {
         public string Name { get; set; }
         public string Description { get; set; }
