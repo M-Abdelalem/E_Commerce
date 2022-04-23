@@ -12,9 +12,9 @@ namespace Persistence.Repositories
             _e_CommerceDbContext=e_CommerceDbContext;
         }
 
-        public async  Task<IReadOnlyList<Product>> GetByBrandId(int? brandId)
+        public async  Task<IReadOnlyList<Product>> GetByBrandId(int productTypeId)
         {
-            return await _e_CommerceDbContext.products.Where(x => x.ProductBrandId == brandId).ToListAsync();
+            return await _e_CommerceDbContext.products.Where(x => x.ProductTypeId == productTypeId).ToListAsync();
         }
 
      

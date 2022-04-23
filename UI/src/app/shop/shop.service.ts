@@ -11,9 +11,9 @@ export class ShopService {
 
   constructor(private http:HttpClient) {
    }
-   getProducts(brandId:number):Observable<Iproduct[]>{
+   getProducts(productTypeId:number):Observable<Iproduct[]>{
      let parameter=new HttpParams();
-      parameter=parameter.append("brandId",brandId)
+      parameter=parameter.append("productTypeId",productTypeId)
 
       return this.http.get<Iproduct[]>(this.baseurl+'/product',{params:parameter});
      

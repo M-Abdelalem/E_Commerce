@@ -3,7 +3,7 @@
     <section class="col-3">
         fillter
         <ul class="list-group">
-            <li class="list-group-item" [ngClass]="{active: item.id==selectedBrandId}"
+            <li class="list-group-item" [ngClass]="{active: item.id==selectedproductTypeId}"
              (click)="SelectBrand(item.id)"
              *ngFor="let item of productTypes">{{item.name}}</li>
     

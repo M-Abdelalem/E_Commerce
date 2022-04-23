@@ -11,7 +11,7 @@ import { ShopService } from './shop.service';
 export class ShopComponent implements OnInit {
   products: Iproduct[]=[];
   productTypes: IproductType[]=[];
-  selectedBrandId:number=0;
+  selectedproductTypeId:number=0;
   constructor(private shopService:ShopService) { }
 
   ngOnInit(): void {
@@ -24,18 +24,18 @@ export class ShopComponent implements OnInit {
     this.selectproducts();
 
   }
-   SelectBrand(brandId:number)
+   SelectBrand(productTypeId:number)
   {
     debugger
-    this.selectedBrandId=brandId
+    this.selectedproductTypeId=productTypeId
     this.selectproducts();
 
   }
   selectproducts(){  
     debugger
-     this.shopService.getProducts(this.selectedBrandId).subscribe(data=>{
+     this.shopService.getProducts(this.selectedproductTypeId).subscribe(data=>{
     this.products=data
-    console.log(this.products)
+    console.log(this.selectedproductTypeId)
 
   });}
 }

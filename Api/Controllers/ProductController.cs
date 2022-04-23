@@ -19,9 +19,9 @@ namespace Api.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IReadOnlyList<ProductDto>>>GetAll(int brandId)
+        public async Task<ActionResult<IReadOnlyList<ProductDto>>>GetAll(int productTypeId)
         {
-            return Ok(_mediatR.Send(new GetProductRequest(brandId)).Result);
+            return Ok(_mediatR.Send(new GetProductRequest(productTypeId)).Result);
         }
     }
 }
