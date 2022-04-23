@@ -3,11 +3,12 @@ import{ HttpClient, HttpParams}from'@angular/common/http'
 import { Iproduct } from '../shared/models/product';
 import { Observable } from 'rxjs';
 import { IproductType } from '../shared/models/productType';
+import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
 export class ShopService {
-  baseurl='https://localhost:7243'
+  baseurl=environment.baseurl
 
   constructor(private http:HttpClient) {
    }
